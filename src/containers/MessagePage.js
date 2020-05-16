@@ -104,7 +104,7 @@ const MessagePage = () => {
     <MessagePageStyle>
       <div className="messagePageContainer">
         <div className="contentContainer">
-          <div className="helloStudent">Hello, {nama}</div>
+          <div className="helloStudent">Dear, {nama}</div>
           <div className="messageStudent">{pesan}</div>
           <div className="button" onClick={() => onSubmit()}>
             Home
