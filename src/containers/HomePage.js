@@ -58,17 +58,18 @@ const HomePageStyle = styled.div`
     margin-top: 1em;
     font-weight: bold;
   }
+
+  .button:hover {
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+  }
 `;
 
 const HomePage = () => {
   const [userInput, setUserInput] = useState("");
+  const [isNavigate, setIsNavigate] = useState(false);
   const handleChange = (e) => {
     setUserInput(e);
   };
-
-  // useEffect(() => {
-  //   localStorage.clear();
-  // }, []);
 
   const handleSubmit = () => {
     axios({
@@ -79,13 +80,13 @@ const HomePage = () => {
       },
     }).then((res) => {
       if (!res.data.isError) {
+        setIsNavigate(true);
         let data = {
           nama: res.data.nama,
           pesan: res.data.pesan,
           img: res.data.img,
         };
         localStorage.setItem("data", JSON.stringify(data));
-        window.location.replace("/message");
       }
     });
   };

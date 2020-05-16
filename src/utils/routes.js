@@ -7,8 +7,8 @@ import TeaserPage from "../containers/TeaserPage";
 const Routes = () => {
   return (
     <Switch>
-      <Route path="/">
-        <TeaserPage />
+      <Route path="/" exact>
+        <HomePage />
       </Route>
       <Route path="/message" exact>
         <MessagePage />
