@@ -10,7 +10,7 @@ const MessagePageStyle = styled.div`
   }
   .messagePageContainer {
     width: 100vw;
-    min-height: 100vh;
+    height: 100vh;
     background-image: url(${Background});
     background-position: center;
     background-repeat: no-repeat;
@@ -65,12 +65,9 @@ const MessagePageStyle = styled.div`
   }
 
   @media screen and (max-width: 600px) {
-    .messagePageContainer {
+    .contentContainer {
       padding-left: 1em;
       padding-right: 1em;
-    }
-    .contentContainer {
-      padding: 0;
     }
     .helloStudent {
       font-size: 2em;
