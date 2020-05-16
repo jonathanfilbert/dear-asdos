@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useLayoutEffect } from "react";
 import styled from "styled-components";
 import Background from "../assets/bg.png";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 const MessagePageStyle = styled.div`
   body {
@@ -44,6 +44,7 @@ const MessagePageStyle = styled.div`
     font-family: "Roboto";
     font-size: 1.15em;
     text-align: justify;
+    width: 100%;
   }
 
   .button {
@@ -66,6 +67,13 @@ const MessagePageStyle = styled.div`
   }
 
   @media screen and (max-width: 600px) {
+    .messagePageContainer {
+      padding-left: 1em;
+      padding-right: 1em;
+    }
+    .contentContainer {
+      padding: 0;
+    }
     .helloStudent {
       font-size: 2em;
     }
@@ -74,6 +82,7 @@ const MessagePageStyle = styled.div`
       text-align: center;
       margin-bottom: 2em;
       margin-top: 2em;
+      overflow-wrap: break-word;
     }
   }
 `;
@@ -81,30 +90,29 @@ const MessagePageStyle = styled.div`
 const MessagePage = () => {
   const [nama, setNama] = useState("");
   const [pesan, setPesan] = useState("");
-  const [image, setImage] = useState("");
+  const history = useHistory();
+
+  const onSubmit = () => {
+    history.push("/");
+  };
 
   useEffect(() => {
     let data = JSON.parse(localStorage.getItem("data"));
     if (data === null) {
-      window.location.replace("/");
+      history.push("/");
+    } else {
+      setNama(data.nama);
+      setPesan(data.pesan);
     }
-    setNama(data.nama);
-    setPesan(data.pesan);
-    setImage(data.image);
-  }, []);
+  }, [history]);
   return (
     <MessagePageStyle>
       <div className="messagePageContainer">
         <div className="contentContainer">
           <div className="helloStudent">Hello, {nama}</div>
           <div className="messageStudent">{pesan}</div>
-          <div className="button">
-            <Link
-              style={{ margin: 0, textDecoration: "none", color: "black" }}
-              to="/"
-            >
-              Home
-            </Link>
+          <div className="button" onClick={() => onSubmit()}>
+            Home
           </div>
         </div>
       </div>

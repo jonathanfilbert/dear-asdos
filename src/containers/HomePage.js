@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import Background from "../assets/bg.png";
 import axios from "axios";
-import { Redirect, Link } from "react-router-dom";
+import { Redirect, Link, useHistory } from "react-router-dom";
 import Footer from "../components/Footer";
 
 const HomePageStyle = styled.div`
@@ -66,6 +66,7 @@ const HomePageStyle = styled.div`
 
 const HomePage = () => {
   const [userInput, setUserInput] = useState("");
+  const history = useHistory();
   const handleChange = (e) => {
     setUserInput(e);
   };
@@ -86,6 +87,9 @@ const HomePage = () => {
           img: res.data.img,
         };
         localStorage.setItem("data", JSON.stringify(data));
+        history.push("/message");
+      } else {
+        alert("Secret code salah");
       }
     });
   };
@@ -99,13 +103,7 @@ const HomePage = () => {
             className="mainInput"
           />
           <div onClick={() => handleSubmit()} className="button">
-            <Link
-              to="/message"
-              className="button"
-              style={{ margin: 0, textDecoration: "none" }}
-            >
-              Go
-            </Link>
+            Go
           </div>
         </div>
         <Footer />
