@@ -74,7 +74,7 @@ const HomePage = () => {
   const handleSubmit = () => {
     axios({
       method: "post",
-      url: "http://localhost:8000/api/get-story/",
+      url: "http://mubarok-api.herokuapp.com/api/get-story/",
       data: {
         secret: `${userInput}`,
       },
