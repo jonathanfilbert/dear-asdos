@@ -22,9 +22,8 @@ const MessagePageStyle = styled.div`
   }
 
   .helloStudent {
-    font-weight: bold;
     color: white;
-    font-family: "Roboto";
+    font-weight: bold;
     font-size: 3em;
   }
 
@@ -41,7 +40,6 @@ const MessagePageStyle = styled.div`
 
   .messageStudent {
     color: white;
-    font-family: "Roboto";
     font-size: 1.15em;
     text-align: justify;
     width: 100%;
