@@ -66,7 +66,6 @@ const HomePageStyle = styled.div`
 
 const HomePage = () => {
   const [userInput, setUserInput] = useState("");
-  const [isNavigate, setIsNavigate] = useState(false);
   const handleChange = (e) => {
     setUserInput(e);
   };
@@ -79,8 +78,8 @@ const HomePage = () => {
         secret: `${userInput}`,
       },
     }).then((res) => {
+      console.log(res);
       if (!res.data.isError) {
-        setIsNavigate(true);
         let data = {
           nama: res.data.nama,
           pesan: res.data.pesan,
@@ -101,8 +100,8 @@ const HomePage = () => {
           />
           <div onClick={() => handleSubmit()} className="button">
             <Link
-              className="button"
               to="/message"
+              className="button"
               style={{ margin: 0, textDecoration: "none" }}
             >
               Go
