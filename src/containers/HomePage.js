@@ -135,23 +135,21 @@ const HomePage = () => {
     <HomePageStyle>
       <div className="container">
         <LoadingBar height={3} color="#f11946" ref={ref} />
-        <animated.div style={props}>
-          <div className="mainContainer">
-            <div className="heroTitle">
-              Satu Mata Kuliah.
-              <br /> Berjuta Cerita.
-            </div>
-            <input
-              value={userInput}
-              onChange={(e) => handleChange(e.target.value)}
-              placeholder="Enter Secret Code"
-              className="mainInput"
-            />
-            <div onClick={() => handleSubmit()} className="button">
-              Go
-            </div>
-            <Footer />
+        <animated.div className="mainContainer" style={props}>
+          <div className="heroTitle">
+            Satu Mata Kuliah.
+            <br /> Berjuta Cerita.
           </div>
+          <input
+            value={userInput}
+            onChange={(e) => handleChange(e.target.value)}
+            placeholder="Enter Secret Code"
+            className="mainInput"
+          />
+          <div onClick={() => handleSubmit()} className="button">
+            Go
+          </div>
+          <Footer />
         </animated.div>
       </div>
     </HomePageStyle>

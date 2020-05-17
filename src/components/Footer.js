@@ -26,8 +26,8 @@ const Footer = () => {
   const [hasMessage, setHasMessage] = useState(false);
   const history = useHistory();
   const props = useSpring({
-    marginTop: 0,
-    from: { marginTop: 1000 },
+    marginBottom: 0,
+    from: { marginBottom: -500 },
   });
 
   useEffect(() => {
@@ -43,19 +43,15 @@ const Footer = () => {
 
   return (
     <FooterStyle>
-      <div className="footerContainer">
+      <animated.div className="footerContainer" style={props}>
         {hasMessage ? (
-          <animated.div
-            onClick={() => seeMessage()}
-            className="button"
-            style={({ background: "red", color: "white" }, props)}
-          >
+          <animated.div onClick={() => seeMessage()} className="button">
             See Message
           </animated.div>
         ) : (
           <div className="jofil">"JONATHAN FILBERT"</div>
         )}
-      </div>
+      </animated.div>
     </FooterStyle>
   );
 };
