@@ -1,15 +1,13 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useState, useRef } from "react";
 import styled from "styled-components";
-import Background from "../assets/bg.png";
 import axios from "axios";
-import { Redirect, Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import Footer from "../components/Footer";
 import { useSnackbar } from "material-ui-snackbar-provider";
 import LoadingBar from "react-top-loading-bar";
 import { useSpring, animated } from "react-spring";
 
 const HomePageStyle = styled.div`
-  font-family: "Arial";
   .title {
     color: green;
     font-weight: bold;
@@ -72,13 +70,13 @@ const HomePageStyle = styled.div`
   }
 
   .heroTitle {
-    font-family: "Arial";
-    font-weight: bold;
+    font-family: "CircularStd", "Arial";
     color: white;
     font-size: 4em;
     max-width: 100%;
     margin-bottom: 0.5em;
     text-align: center;
+    font-weight: bold;
   }
 
   @media screen and (max-width: 600px) {

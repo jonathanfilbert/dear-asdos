@@ -1,11 +1,9 @@
-import React, { useState, useEffect, useLayoutEffect } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import Background from "../assets/bg.png";
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { useSpring, animated } from "react-spring";
 
 const MessagePageStyle = styled.div`
-  font-family: "Arial";
   body {
     padding: 0;
     margin: 0;
@@ -37,14 +35,14 @@ const MessagePageStyle = styled.div`
 
   .messageStudent {
     color: white;
-    font-size: 1.3em;
+    font-size: 1.5em;
     text-align: justify;
     width: 100%;
   }
 
   .button {
-    width: 5em;
-    height: 2em;
+    display: inline-block;
+    padding: 1em 1em 1em 1em;
     background: white;
     color: black;
     display: flex;
@@ -52,9 +50,7 @@ const MessagePageStyle = styled.div`
     align-items: center;
     border-radius: 2px;
     cursor: pointer;
-    margin-top: 1em;
     font-weight: bold;
-    margin-bottom: 2em;
   }
 
   .button:hover {
@@ -65,16 +61,23 @@ const MessagePageStyle = styled.div`
     .contentContainer {
       padding-left: 1em;
       padding-right: 1em;
+      min-height: 100%;
     }
     .helloStudent {
       font-size: 2em;
     }
     .messageStudent {
-      font-size: 1.2em;
+      font-size: 1em;
       text-align: center;
       margin-bottom: 2em;
       margin-top: 2em;
       overflow-wrap: break-word;
+    }
+  }
+
+  @media screen and (max-width: 400px) {
+    .messageStudent {
+      font-size: 0.8em;
     }
   }
 `;

@@ -1,14 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import Background from "../assets/bg.png";
-import axios from "axios";
 import Footer from "../components/Footer";
 
 const HomePageStyle = styled.div`
   .title {
     color: white;
     font-weight: bold;
-    font-family: "Roboto";
     font-weight: bold;
     font-size: 3em;
   }
