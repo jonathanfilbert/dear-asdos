@@ -2,15 +2,22 @@ import React from "react";
 import "./App.css";
 import { BrowserRouter as Router } from "react-router-dom";
 import Routes from "./utils/routes";
+import { SnackbarProvider } from "material-ui-snackbar-provider";
 import GlobalStyles from "./utils/GlobalStyles";
 
 const App = () => {
   return (
-    <GlobalStyles>
+    <SnackbarProvider
+      SnackbarProps={{
+        autoHideDuration: 3000,
+        anchorOrigin: { vertical: "top", horizontal: "center" },
+      }}
+    >
+      <GlobalStyles />
       <Router>
         <Routes />
       </Router>
-    </GlobalStyles>
+    </SnackbarProvider>
   );
 };
 

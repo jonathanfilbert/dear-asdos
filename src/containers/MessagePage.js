@@ -2,8 +2,10 @@ import React, { useState, useEffect, useLayoutEffect } from "react";
 import styled from "styled-components";
 import Background from "../assets/bg.png";
 import { Link, useHistory } from "react-router-dom";
+import { useSpring, animated } from "react-spring";
 
 const MessagePageStyle = styled.div`
+  font-family: "Arial";
   body {
     padding: 0;
     margin: 0;
@@ -11,11 +13,6 @@ const MessagePageStyle = styled.div`
   .messagePageContainer {
     width: 100vw;
     height: 100vh;
-    background-image: url(${Background});
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    padding-top: 3em;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -34,13 +31,13 @@ const MessagePageStyle = styled.div`
     justify-content: center;
     width: 100%;
     height: 100%;
-    padding-left: 4em;
-    padding-right: 4em;
+    padding-left: 5em;
+    padding-right: 5em;
   }
 
   .messageStudent {
     color: white;
-    font-size: 1.15em;
+    font-size: 1.3em;
     text-align: justify;
     width: 100%;
   }
@@ -73,7 +70,7 @@ const MessagePageStyle = styled.div`
       font-size: 2em;
     }
     .messageStudent {
-      font-size: 1em;
+      font-size: 1.2em;
       text-align: center;
       margin-bottom: 2em;
       margin-top: 2em;
@@ -86,6 +83,16 @@ const MessagePage = () => {
   const [nama, setNama] = useState("");
   const [pesan, setPesan] = useState("");
   const history = useHistory();
+  const props = useSpring({
+    opacity: 1,
+    from: { opacity: 0 },
+    width: "100%",
+    height: "100%",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+  });
 
   const onSubmit = () => {
     history.push("/");
@@ -104,11 +111,18 @@ const MessagePage = () => {
     <MessagePageStyle>
       <div className="messagePageContainer">
         <div className="contentContainer">
-          <div className="helloStudent">Dear, {nama}</div>
-          <div className="messageStudent">{pesan}</div>
-          <div className="button" onClick={() => onSubmit()}>
-            Home
-          </div>
+          <animated.div style={props}>
+            <div className="helloStudent">Dear, {nama}</div>
+            <div className="messageStudent">{pesan}</div>
+            <div className="messageStudent" style={{ marginTop: "1em" }}>
+              'til we meet again,
+              <br />
+              Jonathan.
+            </div>
+            <div className="button" onClick={() => onSubmit()}>
+              Home
+            </div>
+          </animated.div>
         </div>
       </div>
     </MessagePageStyle>
